@@ -1,23 +1,22 @@
 import java.util.Scanner;
+import java.util.Stack;
 
-public class PalindromeUC4 {
+public class PalindromeCheckerApp {
 
-    // Method to check palindrome using char array
+    // Method to check palindrome using Stack
     public static boolean isPalindrome(String input) {
-        // Convert string to character array
-        char[] chars = input.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer initialization
-        int left = 0;
-        int right = chars.length - 1;
+        // Push all characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
 
-        // Compare characters from both ends
-        while (left < right) {
-            if (chars[left] != chars[right]) {
+        // Pop and compare with original string
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
                 return false; // Not a palindrome
             }
-            left++;
-            right--;
         }
 
         return true; // Palindrome
