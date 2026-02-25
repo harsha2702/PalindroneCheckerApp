@@ -1,23 +1,22 @@
 import java.util.Scanner;
 
-public class PalindromeCheckerApp {
+// Service class responsible for palindrome logic
+class PalindromeChecker {
 
-    // Method to normalize string
-    public static String normalize(String input) {
-        // Remove spaces and convert to lowercase
-        return input.replaceAll("\\s+", "").toLowerCase();
-    }
+    // Public method exposed to user
+    public boolean checkPalindrome(String input) {
 
-    // Palindrome check using two-pointer
-    public static boolean isPalindrome(String input) {
+        // Preprocessing (optional enhancement)
+        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
 
-        String cleaned = normalize(input);
+        // Internal data structure (char array)
+        char[] chars = cleaned.toCharArray();
 
         int left = 0;
-        int right = cleaned.length() - 1;
+        int right = chars.length - 1;
 
         while (left < right) {
-            if (cleaned.charAt(left) != cleaned.charAt(right)) {
+            if (chars[left] != chars[right]) {
                 return false;
             }
             left++;
@@ -26,20 +25,27 @@ public class PalindromeCheckerApp {
 
         return true;
     }
+}
+
+// Main class for execution
+public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
-        // User input
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        // Check palindrome
-        boolean result = isPalindrome(input);
+        // Create object of service class
+        PalindromeChecker checker = new PalindromeChecker();
 
-        // Output result
+        // Call method
+        boolean result = checker.checkPalindrome(input);
+
+        // Display result
         if (result) {
-            System.out.println("The given string is a Palindrome (Ignoring spaces & case).");
+            System.out.println("The given string is a Palindrome.");
         } else {
             System.out.println("The given string is NOT a Palindrome.");
         }
@@ -47,7 +53,6 @@ public class PalindromeCheckerApp {
         scanner.close();
     }
 }
-
 
 
 
