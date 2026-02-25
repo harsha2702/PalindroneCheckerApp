@@ -1,23 +1,40 @@
 import java.util.Scanner;
 
-public class PalindromeCheckerApp {
+public class PalindromeUC4 {
 
-    public static void main(String[] args) {
+    // Method to check palindrome using char array
+    public static boolean isPalindrome(String input) {
+        // Convert string to character array
+        char[] chars = input.toCharArray();
 
-        Scanner scanner = new Scanner(System.in);
+        // Two-pointer initialization
+        int left = 0;
+        int right = chars.length - 1;
 
-        System.out.print("Enter a string: ");
-        String original = scanner.nextLine();
-
-        String reversed = "";
-
-        // Reverse string using for loop
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
+        // Compare characters from both ends
+        while (left < right) {
+            if (chars[left] != chars[right]) {
+                return false; // Not a palindrome
+            }
+            left++;
+            right--;
         }
 
-        // Compare original and reversed string
-        if (original.equals(reversed)) {
+        return true; // Palindrome
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // User input
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        // Check palindrome
+        boolean result = isPalindrome(input);
+
+        // Output result
+        if (result) {
             System.out.println("The given string is a Palindrome.");
         } else {
             System.out.println("The given string is NOT a Palindrome.");
@@ -26,7 +43,6 @@ public class PalindromeCheckerApp {
         scanner.close();
     }
 }
-
 
 
 
