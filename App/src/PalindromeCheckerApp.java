@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class PalindromeUC8 {
+public class PalindromeCheckerApp {
 
     // Node class for singly linked list
     static class Node {
